@@ -14,16 +14,6 @@ public:
 		this->Hour = a;
 		this->Minute = b;
 	}
-	void Input()
-	{
-		int a,b;
-		do
-		{
-			cout<<"Nhap gio, phut: "<<endl; cin>>a>>b;
-			this->Hour = a;
-			this->Minute = b;
-		}while(b>=60);
-	}
 	
 	int getHour()const
 	{
