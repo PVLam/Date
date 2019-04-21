@@ -16,15 +16,6 @@ public:
 		this->month = b;
 		this->year = c;
 	} 
-	void Input()
-	{
-		int a,b,c;
-		do
-		{
-			cout<<"Nhap ngay, thang, nam: "<<endl; cin>>a>>b>>c;
-			set(a,b,c);
-		}while(a<=0 || a>31 || b<=0 || b>12 || c<=0 ||(a>29 && b==2));
-	}
 
 	int getDay()const
 	{
