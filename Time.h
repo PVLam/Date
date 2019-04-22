@@ -24,6 +24,17 @@ public:
 		return this->Minute;
 	}
 
+	bool checkTime()
+	{
+		int a = getHour();
+		int b = getMinute();
+		if (a<0 || a>23)
+			return false;
+		if (b<0 || b>59)
+			return false;
+		return true;
+	}
+
 	friend ostream &operator <<(ostream & out, const Time &b)
 	{
 		out<<b.getHour()<<':'<<b.getMinute()<<' '<<b.day<<'-'<<b.month<<'-'<<b.year<<endl;
@@ -32,11 +43,17 @@ public:
 
 	friend istream &operator >>(istream &in, Time &x)
 	{
-		cout<<"Nhap ngay: "; in>>x.day;
-		cout<<"Nhap thang: "; in>>x.month;
-		cout<<"Nhap nam: "; in>>x.year;
-		cout<<"Nhap gio: "; in>>x.Hour;
-		cout<<"Nhap phut: "; in>>x.Minute;
+		do
+		{
+			cout<<"Nhap ngay: "; in>>x.day;
+			cout<<"Nhap thang: "; in>>x.month;
+			cout<<"Nhap nam: "; in>>x.year;
+		}while (!x.checkDate());
+		do
+		{	
+			cout<<"Nhap gio: "; in>>x.Hour;
+			cout<<"Nhap phut: "; in>>x.Minute;
+		}while (!x.checkTime());
 		return in;   
 	}
 

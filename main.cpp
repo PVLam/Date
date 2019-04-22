@@ -3,10 +3,13 @@
 
 int main()
 {
+	int n;
 	Date a;
+	Time b;
 	cin>>a;
 	cout<<a;
-	Time b; cin>>b;
+	cout<<"Ngay mai la: "<<a.nextDate();
+	cin>>b;
 	cout<<b;
 	return 0;
 }

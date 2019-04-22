@@ -1,6 +1,7 @@
 #ifndef DATE_H
 #define DATE_H
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 class Date
@@ -15,7 +16,7 @@ public:
 		this->day = a;
 		this->month = b;
 		this->year = c;
-	} 
+	}
 
 	int getDay()const
 	{
@@ -29,10 +30,8 @@ public:
 	{
 		return this->year;
 	}
-
-	Date nextDate()
+	int maxDayinMonth()
 	{
-		Date next;
 		int x = getDay();
 		int y = getMonth();
 		int z = getYear();
@@ -46,6 +45,30 @@ public:
 				max = 28;
 		else
 			max = 30;
+		return max;
+	}
+	bool checkDate()
+	{
+		int x = getDay();
+		int y = getMonth();
+		int z = getYear();
+		int max = maxDayinMonth();
+		if(x<1 || x>max)
+			return false;
+		if(y<1 || y>12)
+			return false;
+		if (z<1)
+			return false;
+		return true;
+	}
+
+	Date nextDate()
+	{
+		Date next;
+		int x = getDay();
+		int y = getMonth();
+		int z = getYear();
+		int max = maxDayinMonth();
 		if (x == max) //vao th ngay cuoi thang
 			if (y == 12)
 				next.set(1,1,z+1); //thang = 12
@@ -64,9 +87,13 @@ public:
 
 	friend istream &operator >>(istream &in, Date &x)
 	{
-		cout<<"Nhap ngay: "; in>>x.day;
-		cout<<"Nhap thang: "; in>>x.month;
-		cout<<"Nhap nam: "; in>>x.year;
+		do
+		{	
+			system("clear");
+			cout<<"Nhap ngay: "; in>>x.day;
+			cout<<"Nhap thang: "; in>>x.month;
+			cout<<"Nhap nam: "; in>>x.year;
+		}while( !x.checkDate() );
 		return in;   
 	}
 
